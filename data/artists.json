@@ -1,0 +1,22 @@
+{
+  "artists": [
+    {
+      "name": "Ravandeh Studio",
+      "role": {
+        "fa": "استودیو",
+        "en": "Studio"
+      },
+      "avatar": "assets/images/artists/ravandeh.png",
+      "bio": {
+        "fa": "هنر هنرمندان با ذوق رَوَنده تبدیل می‌شود به مجموعه‌هایی از کارت‌پستال با متن‌های اختصاصی.",
+        "en": "Ravandeh curates artists’ works into postcard collections with bespoke texts."
+      },
+      "links": [
+        {
+          "label": "Instagram",
+          "href": "https://instagram.com/ravandeh.std?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=artist_card"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "collections": [
+    {
+      "slug": "sample-collection",
+      "title": {
+        "fa": "مجموعه نمونه",
+        "en": "Sample Collection"
+      },
+      "description": {
+        "fa": "نمونه‌ای از کارت‌پستال‌ها با متن‌های اصیل.",
+        "en": "A sample of postcards paired with original texts."
+      },
+      "items": [
+        {
+          "image": "assets/images/artworks/sample-collection/artwork-01.jpg",
+          "title": {
+            "fa": "اثر ۱",
+            "en": "Work 1"
+          },
+          "caption": {
+            "fa": "بسان رود که در نشیب دره سر به سنگ می‌زند — رونده باش.",
+            "en": "Be like a river carving its way — keep moving."
+          }
+        }
+      ]
+    }
+  ]
+}
