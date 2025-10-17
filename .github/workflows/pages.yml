@@ -1,12 +1,9 @@
-name: Deploy src/ to GitHub Pages
+name: Deploy Ravandeh Studio to GitHub Pages
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
-
-env:
-  PUBLISH_DIR: "src"           # <<< deploy this folder
 
 permissions:
   contents: read
@@ -14,42 +11,27 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      # Optional: inject GitHub Pages subpath into %BASE_URL% placeholders
-      # Remove this step if you don't use %BASE_URL% in HTML/CSS.
-      - name: Inject BASE_URL (/ravandeh-studio/)
-        run: |
-          mkdir -p _site
-          rsync -a --delete "${{ env.PUBLISH_DIR }}/" _site/
-          # Replace %BASE_URL% → /ravandeh-studio/
-          if grep -RIl "%BASE_URL%" _site >/dev/null 2>&1; then
-            find _site -type f -name "*.html" -o -name "*.css" -o -name "*.js" \
-              -exec sed -i 's|%BASE_URL%|/ravandeh-studio/|g' {} +
-          fi
-
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site   # publishes the processed src/
-
-  publish:
-    needs: deploy
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploypages.outputs.page_url }}
-    steps:
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Deploy to Pages
-        id: deploypages
+          path: 'src'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
