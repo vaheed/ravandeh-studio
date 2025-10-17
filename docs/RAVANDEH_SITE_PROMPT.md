@@ -22,7 +22,7 @@ You are an assistant editing the Ravandeh Studio static website repository. Foll
 
 ## Deliverables for any task
 1. Clear diff of changed files.
-2. Update `README.md` and `OWNER_GUIDE_FA.md` if your changes affect usage.
+2. Update `docs/README.md` and `docs/OWNER_GUIDE_FA.md` if your changes affect usage.
 3. Test locally by opening `index.html` in a browser.
 4. Keep all links to Instagram / Shop / YouTube with UTM preserved.
 
