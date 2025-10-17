@@ -1,0 +1,17 @@
+{
+  "name": "ravandeh-studio",
+  "version": "1.1.0",
+  "description": "Bilingual static site for Ravandeh Studio with poetic UI/UX.",
+  "private": true,
+  "scripts": {
+    "lint": "node scripts/lint.js",
+    "test": "node scripts/test.js",
+    "build": "node scripts/build.js"
+  },
+  "keywords": [
+    "ravandeh",
+    "postcards",
+    "bilingual",
+    "static-site"
+  ]
+}
