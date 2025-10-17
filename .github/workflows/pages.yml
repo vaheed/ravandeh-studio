@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Change this if your package.json is in a subfolder (e.g. "app")
+env:
+  PROJECT_DIR: "."
+
 permissions:
   contents: read
   pages: write
@@ -25,18 +29,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          # No cache param → no lockfile error
 
-      - name: Install
-        run: npm ci
+      - name: Install dependencies
+        working-directory: ${{ env.PROJECT_DIR }}
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Build
+        working-directory: ${{ env.PROJECT_DIR }}
         run: npm run build
 
-      - name: Upload artifact
+      - name: Upload artifact (dist)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ${{ env.PROJECT_DIR }}/dist
 
   deploy:
     needs: build
@@ -47,7 +58,6 @@ jobs:
     steps:
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
