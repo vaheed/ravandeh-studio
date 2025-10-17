@@ -5,6 +5,7 @@
   const qsa = (selector) => Array.from(document.querySelectorAll(selector));
   const LANGS = Object.keys(window.I18N);
   const DEFAULT_LANG = 'en';
+  const MOTION_MEDIA = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const state = {
     lang: (localStorage.getItem('lang') && LANGS.includes(localStorage.getItem('lang')))
@@ -12,6 +13,13 @@
       : DEFAULT_LANG,
     quoteIndex: 0,
     quoteTimer: null
+  };
+
+  const motion = {
+    pointer: { x: 0.5, y: 0.5 },
+    scroll: 0,
+    elements: [],
+    raf: null
   };
 
   function t(key){
@@ -27,12 +35,28 @@
     document.body.classList.toggle('rtl', isFA);
   }
 
+  function animateLangToggle(){
+    const btn = qs('#lang-toggle');
+    if(!btn) return;
+    btn.dataset.mirror = 'true';
+    setTimeout(() => { btn.dataset.mirror = 'false'; }, 680);
+  }
+
   function updateLangToggle(){
     const btn = qs('#lang-toggle');
     if(!btn) return;
     const targetLang = state.lang === 'fa' ? 'en' : 'fa';
-    btn.textContent = window.I18N[targetLang]?.language_short || targetLang.toUpperCase();
-    btn.setAttribute('aria-label', window.I18N[targetLang]?.language_full || 'Switch language');
+    const currentLabel = window.I18N[state.lang]?.language_short || state.lang.toUpperCase();
+    const nextLabel = window.I18N[targetLang]?.language_short || targetLang.toUpperCase();
+    const currentEl = btn.querySelector('[data-role="current"]');
+    const targetEl = btn.querySelector('[data-role="target"]');
+    if(currentEl){ currentEl.textContent = currentLabel; }
+    if(targetEl){ targetEl.textContent = nextLabel; }
+    btn.setAttribute('aria-label', window.I18N[state.lang]?.language_toggle_label || 'Switch language');
+    btn.dataset.lang = state.lang;
+    if(btn.dataset.mirror !== 'true'){
+      btn.dataset.mirror = 'false';
+    }
   }
 
   function applyTexts(){
@@ -81,7 +105,7 @@
         target.textContent = quotes[state.quoteIndex];
         target.classList.remove('fade-out');
         target.classList.add('fade-in');
-      }, 400);
+      }, 360);
     }, 5200);
   }
 
@@ -118,22 +142,42 @@
       const card = document.createElement('article');
       card.className = 'collection-card';
       card.setAttribute('data-animate', '');
-      const title = col.title?.[state.lang] || '';
-      const description = col.description?.[state.lang] || '';
+      card.setAttribute('data-depth', '0.08');
+
+      const title = col.title?.[state.lang] || col.title?.en || '';
+      const summary = col.summary?.[state.lang] || col.summary?.en || '';
+      const description = col.description?.[state.lang] || col.description?.en || '';
+      const meta = Array.isArray(col.meta) ? col.meta : [];
       const items = Array.isArray(col.items) ? col.items : [];
+      const palette = Array.isArray(col.palette) ? col.palette : [];
+
+      if(palette.length){
+        const [a, b = a, c = a] = palette;
+        card.style.background = `linear-gradient(150deg, ${a}33, ${b}22)`;
+        card.style.boxShadow = `0 30px 80px ${c}44`;
+      }
 
       card.innerHTML = `
-        <div class="collection-meta">
-          <h3>${title}</h3>
-          <p>${description}</p>
-        </div>
+        ${summary ? `<p class="collection-card__summary">${summary}</p>` : ''}
+        <h3>${title}</h3>
+        <p class="collection-card__description">${description}</p>
+        ${meta.length ? `
+          <ul class="collection-card__meta">
+            ${meta.map((entry) => {
+              const label = entry.label?.[state.lang] || entry.label?.en || '';
+              const value = entry.value?.[state.lang] || entry.value?.en || '';
+              return `<li class="collection-card__meta-item"><span>${label}</span><span>${value}</span></li>`;
+            }).join('')}
+          </ul>
+        ` : ''}
         <div class="collection-gallery">
           ${items.map((item, index) => {
-            const itemTitle = item.title?.[state.lang] || '';
-            const itemCaption = item.caption?.[state.lang] || '';
+            const itemTitle = item.title?.[state.lang] || item.title?.en || '';
+            const itemCaption = item.caption?.[state.lang] || item.caption?.en || '';
+            const altText = item.alt?.[state.lang] || item.alt?.en || itemTitle || 'Artwork';
             return `
               <figure class="collection-item" tabindex="0" data-index="${index}">
-                <img loading="lazy" src="${item.image}" alt="${itemTitle || 'Artwork'}">
+                <img loading="lazy" src="${item.image}" alt="${altText}">
                 <div class="overlay">
                   <h4>${itemTitle}</h4>
                   <p>${itemCaption}</p>
@@ -151,15 +195,17 @@
         const item = items[idx];
         if(!item) return;
         const img = figure.querySelector('img');
-        const titleText = item.title?.[state.lang] || '';
-        const captionText = item.caption?.[state.lang] || '';
-        const open = () => openLightbox(img.src, titleText, captionText);
+        const titleText = item.title?.[state.lang] || item.title?.en || '';
+        const captionText = item.caption?.[state.lang] || item.caption?.en || '';
+        const open = () => openLightbox(img.src, titleText, captionText, img.alt);
         img.addEventListener('click', open);
         figure.addEventListener('keypress', (evt) => {
           if(evt.key === 'Enter'){ open(); }
         });
       });
     });
+
+    refreshMotionTargets();
   }
 
   function renderArtists(data){
@@ -174,8 +220,11 @@
       const card = document.createElement('article');
       card.className = 'artist-card';
       card.setAttribute('data-animate', '');
-      const role = artist.role?.[state.lang] || '';
-      const bio = artist.bio?.[state.lang] || '';
+      card.setAttribute('data-depth', '0.06');
+      const role = artist.role?.[state.lang] || artist.role?.en || '';
+      const bio = artist.bio?.[state.lang] || artist.bio?.en || '';
+      const highlights = Array.isArray(artist.highlights) ? artist.highlights : [];
+
       card.innerHTML = `
         <div class="artist-header">
           <img class="artist-avatar" src="${artist.avatar}" alt="${artist.name}">
@@ -185,18 +234,26 @@
           </div>
         </div>
         <p class="artist-bio">${bio}</p>
+        ${highlights.length ? `
+          <ul class="artist-highlights">
+            ${highlights.map((hl) => `<li>${(hl?.[state.lang] || hl?.en || '')}</li>`).join('')}
+          </ul>
+        ` : ''}
         <div class="artist-links">
           ${(artist.links || []).map((link) => `<a class="btn ghost" href="${link.href}" target="_blank" rel="noopener">${link.label}</a>`).join('')}
         </div>
       `;
       wrap.appendChild(card);
     });
+
+    refreshMotionTargets();
   }
 
-  function openLightbox(src, title, caption){
+  function openLightbox(src, title, caption, alt){
     const dlg = qs('#lightbox');
     if(!dlg) return;
     qs('#lightbox-image').src = src;
+    qs('#lightbox-image').alt = alt || title || '';
     qs('#lightbox-title').textContent = title || '';
     qs('#lightbox-text').textContent = caption || '';
     document.body.classList.add('dialog-open');
@@ -263,9 +320,80 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.16 });
 
     qsa('[data-animate]').forEach((el) => observer.observe(el));
+  }
+
+  function applyMotionFrame(){
+    motion.raf = null;
+    if(MOTION_MEDIA.matches){
+      return;
+    }
+    const centerX = motion.pointer.x - 0.5;
+    const centerY = motion.pointer.y - 0.5;
+
+    motion.elements.forEach((el) => {
+      const depth = parseFloat(el.dataset.depth || '0');
+      if(!depth){ return; }
+      const x = centerX * depth * 160;
+      const y = centerY * depth * 120 + motion.scroll * depth * -60;
+      const rotate = centerX * depth * 8;
+      el.style.setProperty('--parallax-x', `${x.toFixed(2)}px`);
+      el.style.setProperty('--parallax-y', `${y.toFixed(2)}px`);
+      el.style.setProperty('--parallax-rotate', `${rotate.toFixed(3)}deg`);
+    });
+  }
+
+  function scheduleMotionFrame(){
+    if(motion.raf || MOTION_MEDIA.matches){
+      return;
+    }
+    motion.raf = requestAnimationFrame(applyMotionFrame);
+  }
+
+  function refreshMotionTargets(){
+    motion.elements = qsa('[data-depth]');
+    if(MOTION_MEDIA.matches){
+      motion.elements.forEach((el) => {
+        el.style.removeProperty('--parallax-x');
+        el.style.removeProperty('--parallax-y');
+        el.style.removeProperty('--parallax-rotate');
+      });
+      return;
+    }
+    scheduleMotionFrame();
+  }
+
+  function onPointerMove(evt){
+    motion.pointer.x = evt.clientX / window.innerWidth;
+    motion.pointer.y = evt.clientY / window.innerHeight;
+    scheduleMotionFrame();
+  }
+
+  function onScroll(){
+    const maxHeight = window.innerHeight;
+    motion.scroll = Math.min(1, window.scrollY / Math.max(maxHeight, 1));
+    scheduleMotionFrame();
+  }
+
+  function onResize(){
+    refreshMotionTargets();
+    scheduleMotionFrame();
+  }
+
+  function initMotion(){
+    refreshMotionTargets();
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    MOTION_MEDIA.addEventListener('change', () => {
+      if(MOTION_MEDIA.matches){
+        refreshMotionTargets();
+      } else {
+        scheduleMotionFrame();
+      }
+    });
   }
 
   function onToggleLang(){
@@ -273,7 +401,8 @@
     state.lang = state.lang === 'fa' ? 'en' : 'fa';
     localStorage.setItem('lang', state.lang);
     document.body.classList.add('lang-switching');
-    setTimeout(() => document.body.classList.remove('lang-switching'), 600);
+    animateLangToggle();
+    setTimeout(() => document.body.classList.remove('lang-switching'), 720);
     setDir();
     applyTexts();
     Promise.all([
@@ -294,6 +423,7 @@
     applyTexts();
     initLinks();
     initLightbox();
+    initMotion();
     Promise.all([
       loadJSON('data/collections.json'),
       loadJSON('data/artists.json')
