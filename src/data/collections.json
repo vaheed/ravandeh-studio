@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ethereal-whispers",
+    "title": {
+      "en": "Ethereal Whispers",
+      "fa": "پچ‌پچ‌های اثیری"
+    },
+    "description": {
+      "en": "A collection exploring the delicate intersection of light and shadow, where traditional Persian aesthetics meet contemporary minimalism.",
+      "fa": "مجموعه‌ای که تقاطع ظریف نور و سایه را بررسی می‌کند، جایی که زیبایی‌شناسی سنتی ایرانی با مینیمالیسم معاصر ملاقات می‌کند."
+    },
+    "year": 2024,
+    "pieces": 12,
+    "imageQuery": "abstract ethereal art"
+  },
+  {
+    "id": "urban-reverie",
+    "title": {
+      "en": "Urban Reverie",
+      "fa": "رویای شهری"
+    },
+    "description": {
+      "en": "Contemporary urban landscapes reimagined through fluid forms and organic curves, celebrating the poetry hidden in architectural chaos.",
+      "fa": "مناظر شهری معاصر که از طریق فرم‌های سیال و منحنی‌های ارگانیک دوباره تصور می‌شوند و شعر پنهان در هرج و مرج معماری را جشن می‌گیرند."
+    },
+    "year": 2024,
+    "pieces": 8,
+    "imageQuery": "urban abstract architecture"
+  },
+  {
+    "id": "temporal-echoes",
+    "title": {
+      "en": "Temporal Echoes",
+      "fa": "پژواک‌های زمانی"
+    },
+    "description": {
+      "en": "Time and memory crystallized into visual narratives, exploring the fluidity of perception across cultures and eras.",
+      "fa": "زمان و خاطره که در روایت‌های بصری متبلور شده‌اند، سیالیت ادراک را در فرهنگ‌ها و دوران‌های مختلف بررسی می‌کنند."
+    },
+    "year": 2023,
+    "pieces": 15,
+    "imageQuery": "time abstract conceptual art"
+  }
+]

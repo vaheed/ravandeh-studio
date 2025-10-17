@@ -1,0 +1,79 @@
+{
+  "siteName": {
+    "en": "Ravandeh Studio",
+    "fa": "استودیو رَوَنده"
+  },
+  "tagline": {
+    "en": "Where Art Meets Light",
+    "fa": "جایی که هنر با نور ملاقات می‌کند"
+  },
+  "hero": {
+    "title": {
+      "en": "Where Art Meets Light",
+      "fa": "جایی که هنر با نور ملاقات می‌کند"
+    },
+    "subtitle": {
+      "en": "A curated collection of contemporary Persian art, sculpted from glass and motion",
+      "fa": "مجموعه‌ای منتخب از هنر معاصر ایرانی، پیکرتراشیده از شیشه و حرکت"
+    },
+    "ctaButton": {
+      "en": "Explore Collections",
+      "fa": "کاوش مجموعه‌ها"
+    }
+  },
+  "sections": {
+    "collections": {
+      "title": {
+        "en": "Collections",
+        "fa": "مجموعه‌ها"
+      },
+      "description": {
+        "en": "Curated exhibitions exploring the intersection of tradition and innovation",
+        "fa": "نمایشگاه‌های منتخب که تقاطع سنت و نوآوری را کاوش می‌کنند"
+      }
+    },
+    "artists": {
+      "title": {
+        "en": "Artists",
+        "fa": "هنرمندان"
+      },
+      "description": {
+        "en": "Meet the visionaries shaping contemporary Persian art",
+        "fa": "با رویابینانی آشنا شوید که هنر معاصر ایرانی را شکل می‌دهند"
+      }
+    },
+    "about": {
+      "title": {
+        "en": "About Ravandeh",
+        "fa": "درباره روندِه"
+      },
+      "description": {
+        "en": "Ravandeh Studio is a digital gallery bridging the gap between Persian artistic traditions and contemporary global art movements. We curate, exhibit, and celebrate works that challenge conventions and inspire imagination.",
+        "fa": "استودیو روندِه یک گالری دیجیتال است که شکاف بین سنت‌های هنری ایرانی و جنبش‌های هنری جهانی معاصر را پر می‌کند. ما آثاری را کیوریت، نمایش و جشن می‌گیریم که قراردادها را به چالش می‌کشند و تخیل را الهام می‌بخشند."
+      }
+    },
+    "contact": {
+      "title": {
+        "en": "Get in Touch",
+        "fa": "تماس با ما"
+      },
+      "description": {
+        "en": "Whether you're an artist, collector, or simply passionate about art, we'd love to hear from you.",
+        "fa": "چه هنرمند باشید، چه کلکسیونر، یا صرفاً مشتاق هنر، دوست داریم از شما بشنویم."
+      }
+    }
+  },
+  "contact": {
+    "email": "hello@ravandeh.studio",
+    "instagram": "ravandeh.studio",
+    "twitter": "ravandehstudio",
+    "website": "ravandeh.studio"
+  },
+  "footer": {
+    "copyright": "© 2025 Ravandeh Studio",
+    "madeWith": {
+      "en": "Made with",
+      "fa": "ساخته شده با"
+    }
+  }
+}

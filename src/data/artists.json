@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sara-mohebi",
+    "name": {
+      "en": "Sara Mohebi",
+      "fa": "سارا محبی"
+    },
+    "bio": {
+      "en": "A multidisciplinary artist exploring the boundaries between traditional Persian calligraphy and digital abstraction. Based in Tehran and Berlin.",
+      "fa": "هنرمند چندرشته‌ای که مرزهای بین خوشنویسی سنتی ایرانی و انتزاع دیجیتال را کاوش می‌کند. مستقر در تهران و برلین."
+    },
+    "specialty": {
+      "en": "Digital Calligraphy & Abstract Forms",
+      "fa": "خوشنویسی دیجیتال و فرم‌های انتزاعی"
+    },
+    "imageQuery": "artist portrait studio"
+  },
+  {
+    "id": "arash-kaviani",
+    "name": {
+      "en": "Arash Kaviani",
+      "fa": "آرش کاویانی"
+    },
+    "bio": {
+      "en": "Visual storyteller merging photography, mixed media, and installation art to create immersive narratives about urban transformation.",
+      "fa": "راوی بصری که عکاسی، رسانه‌های مختلط و هنر چیدمانی را ادغام می‌کند تا روایت‌های فراگیر درباره دگرگونی شهری خلق کند."
+    },
+    "specialty": {
+      "en": "Photography & Installation",
+      "fa": "عکاسی و چیدمان"
+    },
+    "imageQuery": "contemporary photographer portrait"
+  },
+  {
+    "id": "mina-rezaei",
+    "name": {
+      "en": "Mina Rezaei",
+      "fa": "مینا رضایی"
+    },
+    "bio": {
+      "en": "Painter and sculptor whose work investigates materiality, texture, and the ephemeral nature of cultural memory through organic forms.",
+      "fa": "نقاش و مجسمه‌ساز که کارش مادیت، بافت و ماهیت زودگذر حافظه فرهنگی را از طریق فرم‌های ارگانیک بررسی می‌کند."
+    },
+    "specialty": {
+      "en": "Painting & Sculpture",
+      "fa": "نقاشی و مجسمه‌سازی"
+    },
+    "imageQuery": "sculptor artist portrait"
+  }
+]
