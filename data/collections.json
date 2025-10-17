@@ -1,25 +1,102 @@
 {
   "collections": [
     {
-      "slug": "sample-collection",
+      "slug": "liquid-memory",
       "title": {
-        "fa": "مجموعه نمونه",
-        "en": "Sample Collection"
+        "en": "Liquid Memory",
+        "fa": "خاطرهٔ مایع"
+      },
+      "summary": {
+        "en": "First light edition",
+        "fa": "چاپ نور نخست"
       },
       "description": {
-        "fa": "نمونه‌ای از کارت‌پستال‌ها با متن‌های اصیل.",
-        "en": "A sample of postcards paired with original texts."
+        "en": "A luminous postcard sequence pairing pastel gradients with poems about tidal sleep and morning glass.",
+        "fa": "دنباله‌ای درخشان از کارت‌پستال که گرادیان‌های پاستلی را با شعرهایی دربارهٔ خواب جزرومدی و شیشهٔ صبح پیوند می‌دهد."
       },
+      "meta": [
+        {
+          "label": { "en": "Edition", "fa": "تیراژ" },
+          "value": { "en": "75 signed sets", "fa": "۷۵ بسته امضا شده" }
+        },
+        {
+          "label": { "en": "Includes", "fa": "شامل" },
+          "value": { "en": "12 postcards + vellum sleeve", "fa": "۱۲ کارت‌پستال + پوشه کالک" }
+        }
+      ],
+      "palette": ["#7fd3ff", "#c69bff", "#0b1124"],
       "items": [
         {
           "image": "assets/images/artworks/sample-collection/artwork-01.jpg",
           "title": {
-            "fa": "اثر ۱",
-            "en": "Work 1"
+            "en": "Tidal Sunrise",
+            "fa": "سپیدهٔ جزرومدی"
           },
           "caption": {
-            "fa": "بسان رود که در نشیب دره سر به سنگ می‌زند — رونده باش.",
-            "en": "Be like a river carving its way — keep moving."
+            "en": "A glass horizon waking up in two languages.",
+            "fa": "افق شیشه‌ای که به دو زبان بیدار می‌شود."
+          },
+          "alt": {
+            "en": "Gradient postcard with soft cyan and lilac hues",
+            "fa": "کارت‌پستال گرادیان با سایه‌های فیروزه‌ای و یاسی"
+          }
+        },
+        {
+          "image": "assets/images/artworks/sample-collection/artwork-01.jpg",
+          "title": {
+            "en": "Soft Orbit",
+            "fa": "مدار نرم"
+          },
+          "caption": {
+            "en": "Palm-sized poetry orbiting your fingertips.",
+            "fa": "شعر کف‌دستی که دور نوک انگشتان می‌چرخد."
+          },
+          "alt": {
+            "en": "Close-up of a Ravandeh Studio postcard",
+            "fa": "نمای نزدیک کارت‌پستال استودیو رَوَنده"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "midnight-current",
+      "title": {
+        "en": "Midnight Current",
+        "fa": "جریان نیمه‌شب"
+      },
+      "summary": {
+        "en": "Nocturne capsule",
+        "fa": "کپسول شبانه"
+      },
+      "description": {
+        "en": "Deep indigo prints with silver ink stanzas about rivers, satellites, and diaspora dreams.",
+        "fa": "چاپ‌های نیلی عمیق با سطرهای مرکب نقره‌ای دربارهٔ رودها، ماهواره‌ها و خواب‌های دیاسپورا."
+      },
+      "meta": [
+        {
+          "label": { "en": "Print run", "fa": "چاپ" },
+          "value": { "en": "40 numbered sets", "fa": "۴۰ بسته شماره‌دار" }
+        },
+        {
+          "label": { "en": "Format", "fa": "فرمت" },
+          "value": { "en": "A6 postcards + fold-out manifesto", "fa": "کارت‌پستال A6 + مانیفست بازشو" }
+        }
+      ],
+      "palette": ["#1c2540", "#7a7fff", "#05080f"],
+      "items": [
+        {
+          "image": "assets/images/artworks/sample-collection/artwork-01.jpg",
+          "title": {
+            "en": "Night River",
+            "fa": "رود شبانه"
+          },
+          "caption": {
+            "en": "A midnight river reflecting mirrored verses.",
+            "fa": "رود نیمه‌شب که شعرهای آینه‌ای را بازتاب می‌دهد."
+          },
+          "alt": {
+            "en": "Indigo postcard resting on frosted glass",
+            "fa": "کارت‌پستال نیلی روی شیشهٔ مات"
           }
         }
       ]

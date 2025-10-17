@@ -3,14 +3,24 @@
     {
       "name": "Ravandeh Studio",
       "role": {
-        "fa": "استودیو",
-        "en": "Studio"
+        "en": "Studio Lead",
+        "fa": "سرپرست استودیو"
       },
       "avatar": "assets/images/artists/ravandeh.png",
       "bio": {
-        "fa": "هنر هنرمندان با ذوق رَوَنده تبدیل می‌شود به مجموعه‌هایی از کارت‌پستال با متن‌های اختصاصی.",
-        "en": "Ravandeh curates artists’ works into postcard collections with bespoke texts."
+        "en": "Ravandeh curates imagery, writes original poetry, and crafts every bilingual postcard set by hand.",
+        "fa": "رَوَنده تصویرها را کیوریت می‌کند، شعرهای تازه می‌نویسد و هر مجموعهٔ دوزبانه را با دست می‌سازد."
       },
+      "highlights": [
+        {
+          "en": "Poetry direction",
+          "fa": "هدایت شعر"
+        },
+        {
+          "en": "Liquid glass prototyping",
+          "fa": "نمونه‌سازی شیشهٔ روان"
+        }
+      ],
       "links": [
         {
           "label": "Instagram",

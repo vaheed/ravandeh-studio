@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-10-19
+### Added
+- Liquid-glass hero layout with parallax physics, animated EN↔FA toggle, and depth-of-field lightbox polish.
+- Expanded data schema for collections (summary, meta, palette) and artists (highlights) powering organic glass cards.
+- Documentation refresh covering new layout guidance, localisation keys, and usage steps.
+
+### Changed
+- Rebuilt `index.html`, `assets/css/styles.css`, and `assets/js/app.js` for the curved Apple-inspired experience and GPU-friendly motion.
+- Replaced English/Persian messaging in `assets/js/i18n.js` and sample data in `data/*.json` to match the new brief.
+- Updated root `README.md` to include setup, quality checks, and overview of the redesigned site.
+
 ## [1.1.1] - 2025-10-18
 ### Added
 - Apple-inspired UI/UX brief (`docs/RAVANDEH_UI_UX_PROMPT_APPLE.md`) capturing the “Curvature is sacred…” glass guidance.
