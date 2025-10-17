@@ -10,6 +10,10 @@ const filesToCheck = [
   'assets/js/app.js',
   'assets/js/i18n.js',
   'README.md',
+  'docs/README.md',
+  'docs/OWNER_GUIDE_FA.md',
+  'docs/RAVANDEH_SITE_PROMPT.md',
+  'docs/RAVANDEH_UI_UX_PROMPT_APPLE.md',
   'CHANGELOG.md'
 ];
 
