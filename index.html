@@ -1,102 +1,166 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>ravandeh.studio — کارت پستال • استودیو رَوَنده</title>
-  <meta name="description" content="کارت‌پستال‌های هنری با متن‌های اختصاصی — Ravandeh Studio">
+  <meta name="color-scheme" content="dark light">
+  <title>Ravandeh Studio — Postcards in Motion</title>
+  <meta name="description" content="Ravandeh Studio curates poetic postcard collections with bilingual storytelling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/css/styles.css" as="style">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header>
-    <div class="nav">
+  <div class="background">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+  <header class="site-header" data-animate>
+    <div class="nav container">
       <div class="brand">
-        <div class="dot"></div>
-        <div class="name">ravandeh.studio</div>
+        <span class="logo-dot" aria-hidden="true"></span>
+        <a class="brand-name" href="#hero" data-t="brand_name"></a>
       </div>
-      <nav class="menu">
-        <a href="#inventory" data-t="nav_inventory"></a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#hero" data-t="nav_home"></a>
+        <a href="#collections" data-t="nav_collections"></a>
         <a href="#artists" data-t="nav_artists"></a>
-        <a href="#international" data-t="nav_international"></a>
-        <a href="#testimonials" data-t="nav_testimonials"></a>
-        <a href="#you" data-t="nav_you"></a>
-        <a href="#souvenir" data-t="nav_souvenir"></a>
-        <a href="#custom" data-t="nav_custom"></a>
+        <a href="#shop" data-t="nav_shop"></a>
+        <a href="#about" data-t="nav_about"></a>
+        <a href="#contact" data-t="nav_contact"></a>
       </nav>
-      <div class="lang-toggle btn ghost" id="lang-toggle">FA</div>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-live="polite"></button>
     </div>
   </header>
 
-  <div class="container hero center">
-    <div>
-      <h1 data-t="brand_tagline"></h1>
-      <p data-t="hero_quote_1"></p>
-      <p data-t="hero_quote_2"></p>
-      <div class="actions">
-        <a id="link-shop" class="btn primary" target="_blank" rel="noopener"
+  <main>
+    <section class="hero container" id="hero">
+      <div class="hero-text" data-animate>
+        <p class="eyebrow" data-t="hero_intro"></p>
+        <h1 data-t="hero_title"></h1>
+        <p class="hero-quote" id="hero-quote"></p>
+        <p class="hero-sub" data-t="hero_subtitle"></p>
+        <div class="hero-actions">
+          <a id="link-shop" class="btn primary" target="_blank" rel="noopener"
+             href="https://maqaze.shop/store/ravandeh-std/?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=hero">
+            <span data-t="cta_shop"></span>
+          </a>
+          <a id="link-ig" class="btn ghost" target="_blank" rel="noopener"
+             href="https://instagram.com/ravandeh.std?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=hero">
+            <span data-t="cta_instagram"></span>
+          </a>
+          <a id="link-yt" class="btn ghost" target="_blank" rel="noopener"
+             href="https://youtube.com/@faezehdarvish?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=hero">
+            <span data-t="cta_youtube"></span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual" data-animate>
+        <div class="hero-circle">
+          <div class="hero-gradient"></div>
+          <div class="hero-caption" data-t="hero_visual_caption"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections" class="section container" data-animate>
+      <header class="section-heading">
+        <p class="eyebrow" data-t="collections_intro"></p>
+        <h2 data-t="section_collections_title"></h2>
+        <p class="section-sub" data-t="collections_sub"></p>
+      </header>
+      <div id="collections-grid" class="collection-grid"></div>
+    </section>
+
+    <section id="artists" class="section container" data-animate>
+      <header class="section-heading">
+        <p class="eyebrow" data-t="artists_intro"></p>
+        <h2 data-t="section_artists_title"></h2>
+        <p class="section-sub" data-t="artists_sub"></p>
+      </header>
+      <div id="artists-grid" class="artist-grid"></div>
+    </section>
+
+    <section id="shop" class="section container" data-animate>
+      <header class="section-heading">
+        <p class="eyebrow" data-t="shop_intro"></p>
+        <h2 data-t="section_shop_title"></h2>
+        <p class="section-sub" data-t="shop_sub"></p>
+      </header>
+      <div class="cta-panel">
+        <p data-t="shop_panel_text"></p>
+        <a class="btn primary" target="_blank" rel="noopener"
            href="https://maqaze.shop/store/ravandeh-std/?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=hero">
-           <span data-t="cta_shop"></span>
-        </a>
-        <a id="link-ig" class="btn ghost" target="_blank" rel="noopener"
-           href="https://instagram.com/ravandeh.std?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=hero">
-           <span data-t="cta_instagram"></span>
-        </a>
-        <a id="link-yt" class="btn ghost" target="_blank" rel="noopener"
-           href="https://youtube.com/@faezehdarvish?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=hero">
-           <span data-t="cta_youtube"></span>
+          <span data-t="cta_shop"></span>
         </a>
       </div>
-    </div>
-  </div>
-
-  <main class="container">
-    <section id="inventory" class="card">
-      <h3 data-t="section_inventory_title"></h3>
-      <div id="collections"></div>
     </section>
 
-    <section id="artists" class="card">
-      <h3 data-t="section_artists_title"></h3>
-      <div id="artists"></div>
+    <section id="about" class="section container" data-animate>
+      <header class="section-heading">
+        <p class="eyebrow" data-t="about_intro"></p>
+        <h2 data-t="section_about_title"></h2>
+      </header>
+      <div class="about-content">
+        <p data-t="about_body"></p>
+        <p data-t="about_process"></p>
+      </div>
     </section>
 
-    <section id="international" class="card">
-      <h3 data-t="section_international_title"></h3>
-      <p class="muted">Worldwide shipping. Contact via Instagram DM for quotes.</p>
-    </section>
-
-    <section id="testimonials" class="card">
-      <h3 data-t="section_testimonials_title"></h3>
-      <p class="muted">Coming soon.</p>
-    </section>
-
-    <section id="you" class="card">
-      <h3 data-t="section_you_title"></h3>
-      <p class="muted">We write original texts to pair with artists’ works, curating them into postcard collections.</p>
-    </section>
-
-    <section id="souvenir" class="card">
-      <h3 data-t="section_souvenir_title"></h3>
-      <p class="muted">Limited-run souvenirs will be announced here.</p>
-    </section>
-
-    <section id="custom" class="card">
-      <h3 data-t="section_custom_title"></h3>
-      <p class="muted">For bespoke orders, message our Instagram. Please mention you came from ravandeh.studio.</p>
+    <section id="contact" class="section container" data-animate>
+      <header class="section-heading">
+        <p class="eyebrow" data-t="contact_intro"></p>
+        <h2 data-t="section_contact_title"></h2>
+        <p class="section-sub" data-t="contact_sub"></p>
+      </header>
+      <div class="contact-actions">
+        <a class="btn ghost" target="_blank" rel="noopener"
+           href="https://instagram.com/ravandeh.std?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=contact_section">
+          <span data-t="contact_instagram"></span>
+        </a>
+        <a class="btn ghost" target="_blank" rel="noopener"
+           href="https://maqaze.shop/store/ravandeh-std/?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=contact_section">
+          <span data-t="contact_shop"></span>
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-inner container">
-      <div class="small" data-t="footer_rights"></div>
-      <div class="small">© ravandeh.studio</div>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-tagline" data-t="footer_tagline"></p>
+        <p class="footer-rights" data-t="footer_rights"></p>
+      </div>
+      <div class="footer-links">
+        <a target="_blank" rel="noopener"
+           href="https://instagram.com/ravandeh.std?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=footer">
+          Instagram
+        </a>
+        <a target="_blank" rel="noopener"
+           href="https://maqaze.shop/store/ravandeh-std/?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=footer">
+          Shop
+        </a>
+        <a target="_blank" rel="noopener"
+           href="https://youtube.com/@faezehdarvish?utm_source=ravandeh.studio&utm_medium=website&utm_campaign=footer">
+          YouTube
+        </a>
+      </div>
     </div>
   </footer>
 
   <dialog id="lightbox">
-    <div class="toolbar"><button data-close>&times;&nbsp;Close</button></div>
-    <img src="" alt=""/>
+    <div class="lightbox-content">
+      <button data-close type="button" class="btn ghost lightbox-close"></button>
+      <img src="" alt="" id="lightbox-image">
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title"></h3>
+        <p id="lightbox-text"></p>
+      </div>
+    </div>
   </dialog>
 
   <script src="assets/js/i18n.js"></script>
