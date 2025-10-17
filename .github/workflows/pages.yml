@@ -20,18 +20,55 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-      
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          set -euo pipefail
+          echo "Installing dependencies"
+          npm ci
+
+      - name: Run linting
+        run: |
+          set -euo pipefail
+          echo "Running ESLint checks"
+          npm run lint
+
+      - name: Run unit tests
+        run: |
+          set -euo pipefail
+          echo "Running Vitest suite"
+          npm run test
+
+      - name: Type check
+        run: |
+          set -euo pipefail
+          echo "Running TypeScript type checks"
+          npm run typecheck
+
+      - name: Build site
+        run: |
+          set -euo pipefail
+          echo "Building production bundle"
+          npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
-      
+          path: './build'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

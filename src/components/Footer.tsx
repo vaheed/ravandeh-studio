@@ -87,10 +87,10 @@ export function Footer() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex items-center gap-6 text-sm text-[#6b6b6b] dark:text-gray-400"
           >
-            <a href="#" className="hover:text-[#1a1a1a] dark:hover:text-white transition-colors">
+            <a href="https://ravandeh.studio/privacy-policy" className="hover:text-[#1a1a1a] dark:hover:text-white transition-colors">
               {t({ en: 'Privacy Policy', fa: 'حریم خصوصی' })}
             </a>
-            <a href="#" className="hover:text-[#1a1a1a] dark:hover:text-white transition-colors">
+            <a href="https://ravandeh.studio/terms" className="hover:text-[#1a1a1a] dark:hover:text-white transition-colors">
               {t({ en: 'Terms of Service', fa: 'شرایط استفاده' })}
             </a>
           </motion.div>
