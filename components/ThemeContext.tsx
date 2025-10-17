@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 type Theme = 'light' | 'dark';
 
@@ -13,25 +19,40 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('ravandeh-theme') as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      const savedTheme = window.localStorage.getItem("ravandeh-theme") as Theme | null;
+      if (savedTheme) {
+        setTheme(savedTheme);
+        return;
+      }
+
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setTheme(prefersDark ? "dark" : "light");
+    } catch (error) {
+      console.error("[ThemeProvider] Failed to resolve initial theme", error);
     }
   }, []);
 
   useEffect(() => {
-    // Apply theme to document
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('ravandeh-theme', theme);
+    if (typeof document === "undefined" || typeof window === "undefined") {
+      return;
+    }
+
+    document.documentElement.classList.toggle("dark", theme === "dark");
+
+    try {
+      window.localStorage.setItem("ravandeh-theme", theme);
+    } catch (error) {
+      console.error("[ThemeProvider] Failed to persist theme preference", error);
+    }
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
   return (
