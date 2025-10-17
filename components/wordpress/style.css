@@ -1,0 +1,20 @@
+/*
+Theme Name: Ravandeh Studio
+Theme URI: https://ravandeh.studio
+Author: Ravandeh Studio
+Author URI: https://ravandeh.studio
+Description: An Apple-inspired liquid glass design theme featuring organic curved edges, glassmorphism effects, smooth animations, and full bilingual EN/FA support with RTL layout. Perfect for art galleries, creative studios, and portfolio websites.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: ravandeh-studio
+Tags: art, gallery, portfolio, bilingual, rtl-language-support, dark-mode, glassmorphism, animation, custom-post-types, block-patterns, full-site-editing
+*/
+
+/**
+ * This theme uses Tailwind CSS which is compiled and enqueued in functions.php
+ * Custom styling is handled through the assets/css/custom.css file
+ */

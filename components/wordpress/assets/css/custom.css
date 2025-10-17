@@ -1,0 +1,403 @@
+/**
+ * Custom Styles for Ravandeh Studio Theme
+ * Apple-inspired glassmorphism design with RTL support
+ * 
+ * @package Ravandeh_Studio
+ * @since 1.0.0
+ */
+
+/* Import Vazirmatn font for Persian */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600&display=swap');
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.font-vazir,
+.font-vazir {
+    font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* RTL Support */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Glass Card Styles */
+.glass-card {
+    position: relative;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Navigation Styles */
+.site-header {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nav-link {
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* RTL Navigation */
+body.rtl .nav-link::after {
+    left: auto;
+    right: 0;
+}
+
+/* Language Toggle */
+.language-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dark .language-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.language-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.dark .language-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dark .dark-mode-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(180deg) scale(1.05);
+}
+
+.dark .dark-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.hero-section {
+    padding-top: 5rem;
+    position: relative;
+}
+
+.hero-glass-card {
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-fade-in-delay {
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Section Styles */
+.section-header {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.section-header.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: inherit;
+}
+
+.dark .social-link {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.social-link:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-4px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.pagination-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: inherit;
+    text-decoration: none;
+}
+
+.dark .pagination-number {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.pagination-number:hover,
+.pagination-number.active {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5);
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Line Clamp Utility */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+/* Print Styles */
+@media print {
+    .site-header,
+    .site-footer,
+    .nav-actions,
+    .hero-cta,
+    .social-links {
+        display: none;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: wait;
+}
+
+/* Focus Visible */
+:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5);
+    outline-offset: 2px;
+}
+
+/* Custom Logo */
+.custom-logo {
+    max-height: 60px;
+    width: auto;
+}
+
+/* Widget Styles */
+.widget {
+    margin-bottom: 2rem;
+}
+
+.widget-title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+    .hero-glass-card {
+        padding: 2rem !important;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .glass-card {
+        border-width: 2px;
+    }
+}

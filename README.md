@@ -120,23 +120,12 @@ ravandeh.studio/
 git clone https://github.com/YOUR-USERNAME/ravandeh-studio.git
 cd ravandeh-studio
 
-# Install dependencies
-npm install
-
-# Start the local dev server
-npm run dev
-
-# Make your edits, then run quality checks
-npm run lint
-npm run test
-npm run build
+# Make your edits
 
 git add .
 git commit -m "Updated content"
 git push origin main
 ```
-
-> ℹ️ The `build` command outputs a production-ready static site in the `dist/` folder which is published to GitHub Pages automatically.
 
 ---
 
@@ -252,11 +241,6 @@ This site automatically deploys to GitHub Pages when you push to the `main` bran
 ---
 
 ## 📱 Testing
-
-### Commands
-- `npm run lint` — Static analysis for TypeScript and React hooks
-- `npm run test` — Component unit tests powered by Vitest
-- `npm run build` — Production build (ensures GitHub Pages artifact compiles)
 
 ### Desktop
 - Chrome, Firefox, Safari, Edge (latest versions)

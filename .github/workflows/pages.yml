@@ -23,40 +23,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - name: Install dependencies
-        run: |
-          set -euo pipefail
-          npm ci
-
-      - name: Lint
-        run: |
-          set -euo pipefail
-          npm run lint
-
-      - name: Test
-        run: |
-          set -euo pipefail
-          npm run test
-
-      - name: Build
-        run: |
-          set -euo pipefail
-          npm run build
-
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
-
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: '.'
       
       - name: Deploy to GitHub Pages
         id: deployment

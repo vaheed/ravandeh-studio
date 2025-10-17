@@ -1,0 +1,39 @@
+{
+  "name": "ravandeh-studio-theme",
+  "version": "1.0.0",
+  "description": "An Apple-inspired WordPress theme with glassmorphism effects and bilingual support",
+  "main": "index.php",
+  "scripts": {
+    "dev:css": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/tailwind-compiled.css --watch",
+    "build:css": "npx tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/tailwind-compiled.css --minify",
+    "build": "npm run build:css"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "glassmorphism",
+    "bilingual",
+    "rtl",
+    "persian",
+    "art-gallery",
+    "portfolio",
+    "tailwindcss"
+  ],
+  "author": "Ravandeh Studio <hello@ravandeh.studio>",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ravandeh-studio/ravandeh-wordpress-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/ravandeh-studio/ravandeh-wordpress-theme/issues"
+  },
+  "homepage": "https://ravandeh.studio",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

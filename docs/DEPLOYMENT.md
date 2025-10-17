@@ -7,7 +7,6 @@ This guide explains how to deploy your Ravandeh Studio website to various platfo
 ### Prerequisites
 - GitHub account
 - Git installed locally
-- Node.js 20+ installed locally
 - Repository created on GitHub
 
 ### Step-by-Step Instructions
@@ -61,17 +60,10 @@ This guide explains how to deploy your Ravandeh Studio website to various platfo
 
 ### GitHub Actions Workflow (Automated Deployment)
 
-The repository ships with `.github/workflows/pages.yml` which already:
-
-1. Installs Node.js 20 and project dependencies with `npm ci`.
-2. Runs `npm run lint`, `npm run test`, and `npm run build` (each inside a `set -euo pipefail` guarded shell).
-3. Uploads the generated `dist/` directory as the GitHub Pages artifact.
-4. Publishes the built site using `actions/deploy-pages`.
-
-If you need to recreate the workflow from scratch, use the following template:
+Create `.github/workflows/deploy.yml`:
 
 ```yaml
-name: Deploy Ravandeh Studio to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -83,57 +75,23 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-
-      - name: Install dependencies
-        run: |
-          set -euo pipefail
-          npm ci
-
-      - name: Lint
-        run: |
-          set -euo pipefail
-          npm run lint
-
-      - name: Test
-        run: |
-          set -euo pipefail
-          npm run test
-
-      - name: Build
-        run: |
-          set -euo pipefail
-          npm run build
-
+      - uses: actions/checkout@v3
+      
       - name: Setup Pages
-        uses: actions/configure-pages@v4
-
+        uses: actions/configure-pages@v3
+      
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: dist
-
+          path: '.'
+      
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v2
 ```
 
 ## Netlify Deployment
