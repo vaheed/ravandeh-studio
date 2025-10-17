@@ -1,9 +1,13 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
+import { resolveBasePath } from './src/utils/basePath';
 
-  import { defineConfig } from 'vite';
-  import react from '@vitejs/plugin-react-swc';
-  import path from 'path';
+export default defineConfig(() => {
+  const base = resolveBasePath(process.env);
 
-  export default defineConfig({
+  return {
+    base,
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -52,9 +56,11 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      emptyOutDir: true,
     },
     server: {
       port: 3000,
       open: true,
     },
-  });
+  };
+});
