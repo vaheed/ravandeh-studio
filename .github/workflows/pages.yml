@@ -1,13 +1,12 @@
-name: Deploy to GitHub Pages
+name: Deploy src/ to GitHub Pages
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
-# Change this if your package.json is in a subfolder (e.g. "app")
 env:
-  PROJECT_DIR: "."
+  PUBLISH_DIR: "src"           # <<< deploy this folder
 
 permissions:
   contents: read
@@ -19,45 +18,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          # No cache param → no lockfile error
-
-      - name: Install dependencies
-        working-directory: ${{ env.PROJECT_DIR }}
+      # Optional: inject GitHub Pages subpath into %BASE_URL% placeholders
+      # Remove this step if you don't use %BASE_URL% in HTML/CSS.
+      - name: Inject BASE_URL (/ravandeh-studio/)
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
+          mkdir -p _site
+          rsync -a --delete "${{ env.PUBLISH_DIR }}/" _site/
+          # Replace %BASE_URL% → /ravandeh-studio/
+          if grep -RIl "%BASE_URL%" _site >/dev/null 2>&1; then
+            find _site -type f -name "*.html" -o -name "*.css" -o -name "*.js" \
+              -exec sed -i 's|%BASE_URL%|/ravandeh-studio/|g' {} +
           fi
 
-      - name: Build
-        working-directory: ${{ env.PROJECT_DIR }}
-        run: npm run build
-
-      - name: Upload artifact (dist)
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.PROJECT_DIR }}/dist
+          path: _site   # publishes the processed src/
 
-  deploy:
-    needs: build
+  publish:
+    needs: deploy
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploypages.outputs.page_url }}
     steps:
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Deploy
-        id: deployment
+      - name: Deploy to Pages
+        id: deploypages
         uses: actions/deploy-pages@v4
